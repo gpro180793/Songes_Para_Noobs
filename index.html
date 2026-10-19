@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Songes para Noobs — Guía rápida de jefes de Sueños</title>
+  <meta name="description" content="Guía rápida en español de los jefes de Sueños (Songes) de Dofus: información, mecánicas, consejos y valoraciones de Focus, Esquiva y Tanque.">
+  <link rel="icon" type="image/png" href="assets/Favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page-wrap">
+
+    <!-- ============ VISTA: INICIO ============ -->
+    <div id="view-home" class="main-panel">
+      <div class="search-row">
+        <div class="search-container">
+          <input id="search-input" type="text" class="search-bar" placeholder="Buscar un jefe… (en español o francés)" autocomplete="off" spellcheck="false">
+          <div id="search-results" class="search-results"></div>
+        </div>
+        <label class="upper-checkbox">
+          <input id="short-toggle" type="checkbox"> Versión corta si es posible
+        </label>
+      </div>
+
+      <div class="heading">Bienvenido a Songes para Noobs.</div>
+
+      <div>
+        ¿Necesitas informarte sobre un jefe durante tu run de Sueños, pero tienes prisa? ¡Este sitio es perfecto para ti!
+        Los detalles menores se omiten deliberadamente para acelerar tu lectura.
+        También hay versiones cortas disponibles para ir a lo esencial.
+      </div>
+
+      <div class="info-panel">
+        <img src="assets/icons/Information.png" class="panel-icon" alt="">
+        <div class="info-text"><em>La información del jefe está aquí</em></div>
+      </div>
+      <div class="mechanics-panel">
+        <img src="assets/icons/M%C3%A9canique6.png" class="panel-icon" alt="">
+        <div class="info-text"><em>Las mecánicas globales están aquí</em></div>
+      </div>
+      <div class="advice-panel">
+        <img src="assets/icons/Conseils.png" class="panel-icon" alt="">
+        <div class="info-text"><em>Los consejos de estrategia están aquí</em></div>
+      </div>
+
+      <div class="subheading">Gestión general: unas barras de valoración pueden guiarte sobre cómo gestionar al jefe.</div>
+
+      <div class="bars-grid">
+        <div class="bar-block">
+          <div class="bar-title"><img src="assets/icons/Focus.png" alt=""> <span>Focus inmediato</span></div>
+          <div><em>¿Es el jefe un buen primer foco? Un jefe muy peligroso y/o una facilidad de kill favorecen un valor alto.</em></div>
+        </div>
+        <div class="bar-block">
+          <div class="bar-title"><img src="assets/icons/Evasion.png" alt=""> <span>Esquiva</span></div>
+          <div><em>¿Es rentable evitar la interacción con los hechizos del jefe? Un jefe muy peligroso, una baja movilidad y/o un bajo alcance favorecen un valor alto.</em></div>
+        </div>
+        <div class="bar-block">
+          <div class="bar-title"><img src="assets/icons/Tank.png" alt=""> <span>Tanque</span></div>
+          <div><em>¿Es rentable facetankear los hechizos del jefe? Un jefe muy débil y/o una gran dificultad para esquivar sus hechizos favorecen un valor alto.</em></div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:1.4rem;">
+        <button class="btn" id="random-btn">Buscar un jefe al azar</button>
+      </div>
+    </div>
+
+    <!-- ============ VISTA: FICHA DE JEFE ============ -->
+    <div id="view-boss" class="main-panel hidden">
+      <div class="boss-nav">
+        <button class="btn" id="back-btn">← Volver</button>
+        <button class="btn" id="random-btn-2">Jefe al azar</button>
+      </div>
+      <div id="boss-content"></div>
+    </div>
+
+    <div class="footer">
+      <div id="footer-count"></div>
+      <div style="margin-top:.4rem;">
+        <a href="https://dofensive.com/es" target="_blank" rel="noopener">DoFensive</a> —
+        Textos y valoraciones traducidos de <a href="https://volcasaurus.github.io/Songes_Pour_Les_Noobs/" target="_blank" rel="noopener">Songes pour les Noobs</a>.
+      </div>
+      <div style="margin-top:.4rem;">
+        Imágenes y conceptos de Dofus son propiedad exclusiva de Ankama Games.
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

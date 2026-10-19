@@ -1,0 +1,286 @@
+/* Songes para Noobs — estilos (inspirados en Songes_Pour_Les_Noobs) */
+* { box-sizing: border-box; }
+
+html, body {
+  font-family: 'Segoe UI', Tahoma, Helvetica Neue, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  color: #fff;
+  background:
+    linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.78)),
+    url('../assets/images/songes.webp') center / cover no-repeat fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+}
+
+a { color: #7fc4ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- Contenedores ---------- */
+.page-wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.main-panel {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: brightness(0.75) blur(1px);
+  padding: 2rem;
+  border-radius: 12px;
+  color: #fff;
+  margin: 1rem auto;
+}
+
+.hidden { display: none !important; }
+
+/* ---------- Barra de búsqueda ---------- */
+.search-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search-container { flex: 1; position: relative; }
+
+.search-bar {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font-size: 1.05rem;
+  border-radius: 10px;
+  border: 2px solid #c3a057;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  outline: none;
+}
+.search-bar::placeholder { color: #cfcfcf; }
+.search-bar:focus { border-color: #a5d907; }
+
+.upper-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ---------- Resultados de búsqueda ---------- */
+.search-results {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: rgba(10, 12, 10, 0.98);
+  border: 2px solid #c3a057;
+  border-radius: 10px;
+  max-height: 45vh;
+  overflow-y: auto;
+  z-index: 50;
+}
+.search-results:empty { display: none; }
+
+.result-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.result-item:last-child { border-bottom: none; }
+.result-item:hover, .result-item.active { background: rgba(165, 217, 7, 0.18); }
+.result-item img { height: 38px; width: 38px; object-fit: contain; }
+.result-item .rn { font-weight: 600; }
+.result-item .rfr { font-size: 0.78rem; color: #b9b9b9; }
+
+/* ---------- Encabezados ---------- */
+.heading {
+  color: #a5d907;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+.subheading {
+  color: #a5d907;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 1.2rem 0 0.4rem 0;
+}
+.bossname {
+  color: #a5d907;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 0;
+}
+.bossname-fr { color: #cfcfcf; font-size: 0.85rem; font-style: italic; font-weight: normal; }
+
+/* ---------- Paneles de leyenda (inicio) ---------- */
+.info-panel, .mechanics-panel, .advice-panel {
+  padding: 1rem;
+  border-radius: 12px;
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.info-panel { background-color: rgba(0, 64, 0, 0.5); }
+.mechanics-panel { background-color: rgba(128, 128, 128, 0.5); }
+.advice-panel { background-color: rgba(120, 100, 0, 0.5); }
+.panel-icon { height: auto; object-fit: contain; max-height: 50px; }
+.info-text { flex: 1; }
+
+/* ---------- Cabecera del jefe (ficha) ---------- */
+.boss-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+.btn {
+  background: #5b808d;
+  border: 1px solid #c3a057;
+  color: #fff;
+  border-radius: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.btn:hover { background: #6f97a5; }
+
+.monster-header-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.monster-image-box {
+  aspect-ratio: 1 / 1;
+  width: 150px;
+  border: 2px solid #c3a057;
+  border-radius: 12px;
+  background-color: #cfcfcf;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.monster-image-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+.boss-meta { font-size: 0.9rem; line-height: 1.7; }
+.boss-meta .label { color: #a5d907; font-weight: 600; }
+
+/* ---------- Barras de gestión ---------- */
+.bars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+.bar-block {
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(195,160,87,0.45);
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+}
+.bar-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+.bar-title img { height: 28px; width: auto; }
+.bar-track {
+  height: 14px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 7px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 7px;
+  transition: width 0.4s ease;
+}
+.bar-fill.focus { background: linear-gradient(90deg,#e04b4b,#ff8a5b); }
+.bar-fill.esquiva { background: linear-gradient(90deg,#4ba3e0,#5bd0ff); }
+.bar-fill.tanque { background: linear-gradient(90deg,#4be07a,#a5d907); }
+.bar-value { font-size: 0.78rem; color: #cfcfcf; margin-top: 0.25rem; text-align: right; }
+
+/* ---------- Secciones de contenido ---------- */
+.section {
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  margin: 1rem auto;
+}
+.section.informacion { background-color: rgba(0, 64, 0, 0.5); }
+.section.mecanica { background-color: rgba(128, 128, 128, 0.5); }
+.section.consejos { background-color: rgba(120, 100, 0, 0.5); }
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: bold;
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+.section-head img { height: 40px; width: auto; object-fit: contain; }
+.section ul { margin: 0; padding-left: 1.3rem; }
+.section li { margin: 0.25rem 0; line-height: 1.5; }
+.section u { text-decoration: underline; }
+
+/* ---------- Hechizos / extras ---------- */
+.spell-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+.spell-card {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(195,160,87,0.4);
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+}
+.spell-card .sname { color: #a5d907; font-weight: 600; font-size: 0.95rem; }
+.spell-card .sstats { font-size: 0.78rem; color: #cfcfcf; margin: 0.2rem 0; }
+.spell-card .sdesc { font-size: 0.82rem; line-height: 1.4; }
+
+/* ---------- Pie ---------- */
+.footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #b9b9b9;
+  padding: 1.5rem 1rem 2rem;
+  line-height: 1.6;
+}
+.dofensive-icon { height: 28px; width: auto; object-fit: contain; vertical-align: middle; }
+
+.error-box {
+  background: #b32121;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  margin: 1rem auto;
+}
+
+@media (max-width: 600px) {
+  .main-panel { padding: 1.1rem; }
+  .monster-header-block { gap: 15px; }
+  .upper-checkbox { font-size: 0.8rem; }
+}
