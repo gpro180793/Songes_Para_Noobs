@@ -60,25 +60,25 @@
 
   /* ---------- Carga de datos ---------- */
 
-  fetch("data/jefes.json")
-    .then(function (r) {
-      if (!r.ok) throw new Error("HTTP " + r.status);
-      return r.json();
-    })
-    .then(function (data) {
-      BOSSES = data;
-      data.forEach(function (b) { BY_ID[b.id] = b; });
-      document.getElementById("footer-count").textContent =
-        BOSSES.length + " jefes · datos de DoFensive (es)";
-      var wanted = new URLSearchParams(location.search).get("boss");
-      if (wanted && BY_ID[wanted]) showBoss(parseInt(wanted, 10));
-    })
-    .catch(function (e) {
-      bossContent = document.getElementById("boss-content");
-      viewHome.innerHTML =
-        '<div class="error-box"><strong>Se ha producido un error al cargar los datos.</strong><br>' +
-        esc(e.message) + "</div>";
-    });
+  // Los datos vienen incrustados en data/jefes.js (window.SONGES_DATA), cargado con
+  // una etiqueta <script>. Así el sitio funciona también abriendo index.html
+  // directamente (file://), donde fetch() de archivos locales está bloqueado.
+  // Si por lo que sea no estuviera, se intenta fetch() como respaldo.
+  function onDataReady(data) {
+    BOSSES = data;
+    data.forEach(function (b) { BY_ID[b.id] = b; });
+    document.getElementById("footer-count").textContent =
+      BOSSES.length + " jefes · datos de DoFensive (es)";
+    buildIndex();
+    var wanted = new URLSearchParams(location.search).get("boss");
+    if (wanted && BY_ID[wanted]) showBoss(parseInt(wanted, 10));
+  }
+
+  function showLoadError(msg) {
+    viewHome.innerHTML =
+      '<div class="error-box"><strong>Se ha producido un error al cargar los datos.</strong><br>' +
+      esc(msg) + "</div>";
+  }
 
   /* ---------- Búsqueda ---------- */
 
@@ -266,8 +266,24 @@
     if (e.key === "Escape") goHome();
   });
 
-  // Construye el índice en cuanto lleguen los datos.
-  var wait = setInterval(function () {
-    if (BOSSES.length) { buildIndex(); clearInterval(wait); }
-  }, 50);
+  /* ---------- Arranque ---------- */
+  // Se ejecuta al final para que INDEX, buildIndex, showBoss, etc. ya estén listos.
+  if (Array.isArray(window.SONGES_DATA) && window.SONGES_DATA.length) {
+    onDataReady(window.SONGES_DATA);
+  } else {
+    fetch("data/jefes.json")
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      })
+      .then(onDataReady)
+      .catch(function (e) {
+        showLoadError(
+          e.message +
+          (location.protocol === "file:"
+            ? " — Abre el sitio con un servidor local (ver README) o comprueba que data/jefes.js existe."
+            : "")
+        );
+      });
+  }
 })();

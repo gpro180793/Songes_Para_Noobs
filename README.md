@@ -36,7 +36,8 @@ Insensible a acentos y mayúsculas, y funciona en **español o francés**:
 index.html            Aplicación (una sola página)
 css/style.css         Estilos
 js/app.js             Búsqueda, ficha de jefe, versión corta
-data/jefes.json       Los 150 jefes con todo el contenido
+data/jefes.json       Los 150 jefes con todo el contenido (fuente legible)
+data/jefes.js         Los mismos datos, incrustados como <script> para abrir sin servidor
 assets/images/        Retratos de los jefes
 assets/icons/         Iconos (información, mecánica, consejos, focus, esquiva, tanque)
 assets/illustrations/ Ilustraciones de algunos combates
@@ -44,13 +45,19 @@ assets/illustrations/ Ilustraciones de algunos combates
 
 ## Uso local
 
-Sirve la carpeta con cualquier servidor estático (el `fetch` de `data/jefes.json`
-no funciona con `file://`):
+**Opción 1 — abrir directamente (lo más fácil):** haz doble clic en `index.html`.
+Los datos van incrustados en `data/jefes.js`, así que funciona sin servidor.
+
+**Opción 2 — con servidor local** (útil si vas a editar los datos):
 
 ```bash
 python -m http.server 8765
 # abre http://127.0.0.1:8765/
 ```
+
+> Si ves *«Se ha producido un error al cargar los datos»*, comprueba que
+> `data/jefes.js` está junto al `index.html`. Ese archivo es el que lleva los
+> datos incrustados y es lo que permite abrir la página sin servidor.
 
 ## Aviso legal
 
