@@ -262,6 +262,30 @@ a:hover { text-decoration: underline; }
 .spell-card .sstats { font-size: 0.78rem; color: #cfcfcf; margin: 0.2rem 0; }
 .spell-card .sdesc { font-size: 0.82rem; line-height: 1.4; }
 
+/* ---------- Enlace a DoFensive ---------- */
+.dofensive-link-wrap {
+  text-align: center;
+  margin: 1.2rem auto;
+}
+.dofensive-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: #5b808d;
+  border: 1px solid #c3a057;
+  border-radius: 0.5rem;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.dofensive-link:hover {
+  background: #6f97a5;
+  text-decoration: none;
+}
+.dofensive-link .dofensive-icon { height: 26px; width: auto; }
+
 /* ---------- Pie ---------- */
 .footer {
   text-align: center;

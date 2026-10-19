@@ -220,6 +220,15 @@
     html += section("mecanica", "M%C3%A9canique6.png", "Mecánicas globales", meca);
     html += section("consejos", "Conseils.png", "Consejos de estrategia", adv);
 
+    // Enlace a la ficha del jefe en DoFensive (en español), como en el sitio original.
+    if (b.dofensive) {
+      html += '<div class="dofensive-link-wrap">' +
+        '<a class="dofensive-link" href="' + esc(b.dofensive) + '" target="_blank" rel="noopener">' +
+        "¿Necesitas detalles? " +
+        '<img src="assets/icons/Dofensive.png" class="dofensive-icon" alt="DoFensive">' +
+        "</a></div>";
+    }
+
     if (b.hechizos && b.hechizos.length) {
       html += '<div class="subheading">Hechizos del jefe</div><div class="spell-grid">' +
         b.hechizos.map(function (s) {
